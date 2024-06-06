@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import Server from "../../../components/Server";
+import Server from "../../components/Server";
 
 export default function Tab() {
     return (
