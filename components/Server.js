@@ -1,24 +1,29 @@
 import React from "react";
-import {View, Text, StyleSheet, Button, TouchableOpacity} from "react-native";
+import {View, Text, StyleSheet, Button, TouchableOpacity, TouchableWithoutFeedback} from "react-native";
+import {useRouter} from "expo-router";
 
 const Server = () => {
+    const router = useRouter();
+
     return (
-        <View style={styles.server}>
-            <Text style={styles.server_name}>Server Name</Text>
-            <View style={styles.informationen}>
-                <Text style={styles.information_text}>SSL Zertifikat: true</Text>
-                <Text style={styles.information_text}>DNS: 127.0.0.1</Text>
-                <Text style={styles.information_text}>Code: 200</Text>
-                <Text style={styles.information_text}>Status: Online</Text>
+        <TouchableWithoutFeedback onPress={() => router.navigate({pathname: "serverInformation"})}>
+            <View style={styles.server}>
+                <Text style={styles.server_name}>Server Name</Text>
+                <View style={styles.informationen}>
+                    <Text style={styles.information_text}>SSL Zertifikat: true</Text>
+                    <Text style={styles.information_text}>DNS: 127.0.0.1</Text>
+                    <Text style={styles.information_text}>Code: 200</Text>
+                    <Text style={styles.information_text}>Status: Online</Text>
+                </View>
+                <View style={styles.status}>
+                    <View style={styles.status_point}></View>
+                    <Text style={styles.status_text}>Online</Text>
+                </View>
+                <TouchableOpacity style={styles.edit_button}>
+                    <Text style={styles.edit_button_text}>Edit</Text>
+                </TouchableOpacity>
             </View>
-            <View style={styles.status}>
-                <View style={styles.status_point}></View>
-                <Text style={styles.status_text}>Online</Text>
-            </View>
-            <TouchableOpacity style={styles.edit_button}>
-                <Text style={styles.edit_button_text}>Edit</Text>
-            </TouchableOpacity>
-        </View>
+        </TouchableWithoutFeedback>
     );
 }
 

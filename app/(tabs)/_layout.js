@@ -12,11 +12,12 @@ export default function TabLayout() {
                 }}
             />
             <Tabs.Screen
-                name="settings"
+                name="addserver"
                 options={{
-                    title: 'Einstellungen',
-                    tabBarIcon: ({ color }) => <FontAwesome size={28} name="cog" color={color} />,
+                    title: 'Server hinzufügen',
+                    tabBarIcon: ({ color }) => <FontAwesome size={28} name="plus" color={color} />,
                 }}
+
             />
             <Tabs.Screen
                 name="profil"
