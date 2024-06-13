@@ -9,19 +9,11 @@ const Server = () => {
         <TouchableWithoutFeedback onPress={() => router.navigate({pathname: "serverInformation"})}>
             <View style={styles.server}>
                 <Text style={styles.server_name}>Server Name</Text>
-                <View style={styles.informationen}>
-                    <Text style={styles.information_text}>SSL Zertifikat: true</Text>
-                    <Text style={styles.information_text}>DNS: 127.0.0.1</Text>
-                    <Text style={styles.information_text}>Code: 200</Text>
-                    <Text style={styles.information_text}>Status: Online</Text>
-                </View>
                 <View style={styles.status}>
                     <View style={styles.status_point}></View>
                     <Text style={styles.status_text}>Online</Text>
                 </View>
-                <TouchableOpacity style={styles.edit_button}>
-                    <Text style={styles.edit_button_text}>Edit</Text>
-                </TouchableOpacity>
+                <Button style={styles.edit_button} title={"Bearbeiten"}></Button>
             </View>
         </TouchableWithoutFeedback>
     );
@@ -40,19 +32,9 @@ const styles = StyleSheet.create({
     },
     server_name: {
         fontSize: 18,
-        marginTop: 20,
-        marginRight: 200
-    },
-    information_text: {
-        marginTop: 2,
-        textAlign: 'left',
-    },
-    informationen: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'flex-start',
-        width: '100%',
-        paddingLeft: 20,
+        marginBottom: 20,
+        justifyContent: "center",
+        alignItems: "center",
     },
     status: {
         position: 'absolute',
@@ -73,20 +55,9 @@ const styles = StyleSheet.create({
         marginLeft: 4,
     },
     edit_button: {
-        backgroundColor: "#007AFF",
-        width: 70,
-        height: 30,
-        borderRadius: 200,
-        justifyContent: 'center',
-        alignItems: 'center',
         position: "absolute",
-        right: 15,
-        bottom: 10
+        marginLeft: 100,
     },
-    edit_button_text: {
-        color: "#FFFFFF",
-        fontSize: 16
-    }
 
 });
 

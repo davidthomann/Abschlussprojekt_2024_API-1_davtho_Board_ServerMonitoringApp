@@ -20,10 +20,26 @@ export default function Tab() {
         });
     };
 
-    const handleSubmit = () => {
-        // Hier kannst du die Formulardaten verarbeiten, z.B. absenden
-        Alert.alert('Formulardaten', JSON.stringify(formData));
+    const handleSubmit = async () => {
+        try {
+            const response = await fetch('http://10.80.4.55:3000/api/addserver', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to add server');
+            }
+
+            Alert.alert('Success', 'Server added successfully');
+        } catch (error) {
+            Alert.alert('Error', error.message);
+        }
     };
+
 
     const handleCheckboxChange = (name, value) => {
         setFormData({
