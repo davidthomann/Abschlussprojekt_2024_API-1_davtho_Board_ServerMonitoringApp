@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {View, Text, TextInput, Button, StyleSheet, Alert, Switch, ScrollView} from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, Alert, Switch, ScrollView } from 'react-native';
 
 export default function Tab() {
     const [formData, setFormData] = useState({
@@ -40,7 +40,6 @@ export default function Tab() {
         }
     };
 
-
     const handleCheckboxChange = (name, value) => {
         setFormData({
             ...formData,
@@ -73,7 +72,7 @@ export default function Tab() {
                 />
                 <Text style={[styles.title, { marginTop: 20 }]}>Optionale Funktionen</Text>
                 <View style={styles.checkboxContainer}>
-                    <Text style={styles.checkboxText}>MongoDB</Text>
+                    <Text style={styles.checkboxText}>Server Uptime</Text>
                     <Switch
                         value={formData.checkbox1}
                         onValueChange={(value) => handleCheckboxChange('checkbox1', value)}
@@ -123,24 +122,35 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 18,
         marginBottom: 20,
+        alignSelf: 'flex-start',
+        textAlign: 'left',
+    },
+    login_container: {
+        alignItems: 'center',
+        marginBottom: 20,
     },
     input: {
         height: 60,
         backgroundColor: "#FFFFFF",
-        marginBottom: 20,
         paddingLeft: 8,
-        width: 350,
         borderRadius: 10,
+        width: 350,
+        marginBottom: 20,
     },
     checkboxContainer: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         width: '100%',
-        paddingHorizontal: 16,
-        marginBottom: 20,
+        marginBottom: 10,
     },
-    checkboxText: {
+    checkboxLabel: {
         flex: 1,
+        textAlign: 'left',
+    },
+    checkbox: {
+        marginLeft: 10,
     },
 });
+
+

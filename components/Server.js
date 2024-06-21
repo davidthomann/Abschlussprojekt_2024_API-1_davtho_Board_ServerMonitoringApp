@@ -1,19 +1,15 @@
-import React from "react";
-import {View, Text, StyleSheet, Button, TouchableOpacity, TouchableWithoutFeedback} from "react-native";
-import {useRouter} from "expo-router";
+import React from 'react';
+import { View, Text, StyleSheet, Button, TouchableWithoutFeedback } from 'react-native';
+import { useRouter } from 'expo-router';
 
-const Server = () => {
+const Server = ({ name, ip, port }) => {
     const router = useRouter();
 
     return (
-        <TouchableWithoutFeedback onPress={() => router.navigate({pathname: "serverInformation"})}>
+        <TouchableWithoutFeedback onPress={() => router.navigate({ pathname: "serverInformation" })}>
             <View style={styles.server}>
-                <Text style={styles.server_name}>Server Name</Text>
-                <View style={styles.status}>
-                    <View style={styles.status_point}></View>
-                    <Text style={styles.status_text}>Online</Text>
-                </View>
-                <Button style={styles.edit_button} title={"Bearbeiten"}></Button>
+                <Text style={styles.server_name}>{name}</Text>
+                <Text style={styles.ip}>{ip}:{port}</Text>
             </View>
         </TouchableWithoutFeedback>
     );
@@ -35,6 +31,10 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         justifyContent: "center",
         alignItems: "center",
+    },
+    ip: {
+        fontSize: 16,
+        color: "#888",
     },
     status: {
         position: 'absolute',
@@ -58,11 +58,6 @@ const styles = StyleSheet.create({
         position: "absolute",
         marginLeft: 100,
     },
-
 });
 
 export default Server;
-
-
-
-

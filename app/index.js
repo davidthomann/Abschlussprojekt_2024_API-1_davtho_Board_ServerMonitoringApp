@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Alert, ScrollView } from 'react-native';
+import {View, Text, TextInput, Button, StyleSheet, Alert, ScrollView, SafeAreaView} from 'react-native';
+import {router} from "expo-router";
 
 const serverIP = "10.80.4.55:3000"
 
@@ -42,6 +43,7 @@ export default function App() {
             if (response.ok) {
                 const user = await response.json();
                 Alert.alert('Login erfolgreich', JSON.stringify(user));
+                router.replace('(tabs)');
             } else {
                 const error = await response.text();
                 Alert.alert('Login fehlgeschlagen', error);
@@ -74,50 +76,55 @@ export default function App() {
     };
 
     return (
-        <ScrollView>
-            <View style={styles.container}>
-                <Text style={styles.title}>Login</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Email"
-                    value={loginFormData.email}
-                    onChangeText={(value) => handleEmailFormChange('email', value)}
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Passwort"
-                    value={loginFormData.password}
-                    onChangeText={(value) => handleEmailFormChange('password', value)}
-                    secureTextEntry
-                />
-                <Button title="Einloggen" onPress={handleEmailFormSubmit} />
+        <SafeAreaView>
+            <ScrollView>
+                <View style={styles.container}>
+                    <View style={styles.login_container}>
+                        <Text style={styles.title}>Login</Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Email"
+                            value={loginFormData.email}
+                            onChangeText={(value) => handleEmailFormChange('email', value)}
+                        />
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Passwort"
+                            value={loginFormData.password}
+                            onChangeText={(value) => handleEmailFormChange('password', value)}
+                            secureTextEntry
+                        />
+                        <Button title="Einloggen" onPress={handleEmailFormSubmit} />
+                    </View>
 
-                <Text style={styles.title}>Registrieren</Text>
+                    <Text style={styles.title}>Registrieren</Text>
 
-                <TextInput
-                    style={styles.input}
-                    placeholder="Email"
-                    value={registerFormData.email}
-                    onChangeText={(value) => handlePasswordFormChange('email', value)}
-                />
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Email"
+                        value={registerFormData.email}
+                        onChangeText={(value) => handlePasswordFormChange('email', value)}
+                    />
 
-                <TextInput
-                    style={styles.input}
-                    placeholder="Passwort"
-                    value={registerFormData.password1}
-                    onChangeText={(value) => handlePasswordFormChange('password1', value)}
-                    secureTextEntry
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Passwort bestätigen"
-                    value={registerFormData.password2}
-                    onChangeText={(value) => handlePasswordFormChange('password2', value)}
-                    secureTextEntry
-                />
-                <Button title="Passwort Formular Absenden" onPress={handlePasswordFormSubmit} />
-            </View>
-        </ScrollView>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Passwort"
+                        value={registerFormData.password1}
+                        onChangeText={(value) => handlePasswordFormChange('password1', value)}
+                        secureTextEntry
+                    />
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Passwort bestätigen"
+                        value={registerFormData.password2}
+                        onChangeText={(value) => handlePasswordFormChange('password2', value)}
+                        secureTextEntry
+                    />
+                    <Button title="Registrieren" onPress={handlePasswordFormSubmit} />
+                </View>
+            </ScrollView>
+        </SafeAreaView>
+
     );
 }
 
@@ -140,4 +147,5 @@ const styles = StyleSheet.create({
         width: 350,
         borderRadius: 10,
     },
+
 });
